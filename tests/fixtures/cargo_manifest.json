@@ -1,0 +1,171 @@
+{
+  "package": {
+    "name": "zinc",
+    "version": "2.0.2",
+    "authors": [
+      "Craig Bishop <craig.bishop@decatechnologies.com>",
+      "Chris Brue <chris.brue@decatechnologies.com>",
+      "Christopher Negrich <chris.negrich@decatechnologies.com>",
+      "Christopher Sebastian <christopher.sebastian@decatechnologies.com>",
+      "Jiyang Zhou <jiyang.zhou@decatechnologies.com>"
+    ],
+    "description": "Adaptive Patterning core engine"
+  },
+  "dependencies": [
+    {
+      "name": "serde",
+      "optional": false,
+      "version": "1.0"
+    },
+    {
+      "name": "serde_derive",
+      "optional": false,
+      "version": "1.0"
+    },
+    {
+      "name": "serde_json",
+      "optional": false,
+      "version": "1.0"
+    },
+    {
+      "name": "silicon",
+      "optional": false,
+      "git": "ssh://git@github.com/Deca-Technologies/silicon.git",
+      "branch": "master"
+    },
+    {
+      "name": "clap",
+      "optional": false,
+      "version": "2.24.2"
+    },
+    {
+      "name": "geomite",
+      "optional": false,
+      "git": "ssh://git@github.com/Deca-Technologies/geomite.git",
+      "branch": "master"
+    },
+    {
+      "name": "hlua",
+      "optional": false,
+      "version": "0.3.1"
+    },
+    {
+      "name": "flate2",
+      "optional": false,
+      "version": "0.2"
+    },
+    {
+      "name": "either",
+      "optional": false,
+      "version": "1.5"
+    },
+    {
+      "name": "spade",
+      "optional": false,
+      "git": "ssh://git@github.com/Deca-Technologies/spade.git",
+      "branch": "master"
+    },
+    {
+      "name": "error-chain",
+      "optional": false,
+      "version": "0.12.0"
+    },
+    {
+      "name": "itertools",
+      "optional": false,
+      "version": "0.8.0"
+    },
+    {
+      "name": "petgraph",
+      "optional": false,
+      "version": "0.4.13"
+    },
+    {
+      "name": "sorted-list",
+      "optional": false,
+      "version": "0.2.0"
+    },
+    {
+      "name": "rayon",
+      "optional": false,
+      "version": "1.0.3"
+    },
+    {
+      "name": "rmp-serde",
+      "optional": false,
+      "version": "0.13.7"
+    },
+    {
+      "name": "serde_bytes",
+      "optional": false,
+      "version": "0.11.1"
+    },
+    {
+      "name": "vergen",
+      "optional": false,
+      "version": "3"
+    },
+    {
+      "name": "zincite",
+      "optional": false,
+      "git": "ssh://git@github.com/Deca-Technologies/zincite.git",
+      "branch": "develop"
+    },
+    {
+      "name": "cgmath",
+      "features": [
+        "serde"
+      ],
+      "optional": false,
+      "version": "0.17"
+    },
+    {
+      "name": "tool",
+      "optional": true,
+      "version": "0.0.34"
+    }
+  ],
+  "dev_dependencies": [
+    {
+      "name": "assert_approx_eq",
+      "optional": false,
+      "version": "1.0.0"
+    },
+    {
+      "name": "rstest",
+      "optional": false,
+      "version": "0.11.0"
+    }
+  ],
+  "build_dependencies": [
+    {
+      "name": "vergen",
+      "optional": false,
+      "version": "3"
+    },
+    {
+      "name": "cc",
+      "optional": false,
+      "version": "1.0.17"
+    },
+    {
+      "name": "libc",
+      "optional": false,
+      "version": "0.2.17"
+    }
+  ],
+  "features": [
+    {
+      "name": "debug_tools",
+      "includes_features": [
+        "tool"
+      ]
+    }
+  ],
+  "profile": [
+    {
+      "name": "release",
+      "debug": "True"
+    }
+  ]
+}

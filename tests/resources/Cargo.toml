@@ -1,0 +1,70 @@
+[package]
+name = "zinc"
+version = "2.0.2"
+authors = [
+  "Craig Bishop <craig.bishop@decatechnologies.com>",
+  "Chris Brue <chris.brue@decatechnologies.com>",
+  "Christopher Negrich <chris.negrich@decatechnologies.com>",
+  "Christopher Sebastian <christopher.sebastian@decatechnologies.com>",
+  "Jiyang Zhou <jiyang.zhou@decatechnologies.com>",
+]
+description = "Adaptive Patterning core engine"
+edition = "2018"
+build = "build.rs"
+default-run = "zinc"  # "cargo run" uses 'zinc' by default.  "cargo run --bin fuzzer"
+
+[dependencies]
+serde = "1.0"
+serde_derive = "1.0"
+serde_json = "1.0"
+silicon = { git = "ssh://git@github.com/Deca-Technologies/silicon.git", branch = "master"  }
+clap = "2.24.2"
+geomite = { git = "ssh://git@github.com/Deca-Technologies/geomite.git", branch = "master"  }
+hlua = "0.3.1"
+flate2 = "0.2"
+either = "1.5"
+spade = { git = "ssh://git@github.com/Deca-Technologies/spade.git", branch = "master"  }
+error-chain = "0.12.0"
+itertools = "0.8.0"
+petgraph = "0.4.13"
+sorted-list = "0.2.0"
+rayon = "1.0.3"
+rmp-serde = "0.13.7"
+serde_bytes = "0.11.1"
+vergen = "3"
+zincite = { git = "ssh://git@github.com/Deca-Technologies/zincite.git", branch = "develop" }
+
+[dependencies.cgmath]
+features = ["serde"]
+version = "0.17"
+
+[dev-dependencies]
+assert_approx_eq = "1.0.0"
+rstest = "0.11.0"
+
+[profile.release]
+debug = true
+
+[build-dependencies]
+vergen = "3"
+cc = "1.0.17"
+libc = "0.2.17"
+
+[dependencies.tool]
+package = "gnuplot"
+version = "0.0.34"
+optional = true
+
+
+[features]
+debug_tools = ["tool"]
+
+# Multiple Binary Targets
+# https://doc.rust-lang.org/cargo/reference/cargo-targets.html#configuring-a-target
+[[bin]]
+name = "zinc"
+path = "src/main.rs"
+
+[[bin]]
+name = "fuzzer"
+path = "src/fuzzer/main.rs"
