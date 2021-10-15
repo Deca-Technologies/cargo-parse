@@ -12,6 +12,35 @@ pydantic = "^1.8.2"
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 devtools = "^0.8.0"
+black = "^21.9b0"
+isort = "^5.9.3"
+
+[tool.black]
+line-length = 79
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+known_first_party = 'simplecalc'
+known_third_party = ["click", "pytest"]
+multi_line_output = 3
+lines_after_imports = 2
+force_grid_wrap = 0
+combine_as_imports = true
+include_trailing_comma = true
+
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

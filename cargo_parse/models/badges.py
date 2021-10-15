@@ -1,6 +1,6 @@
-from cargo_parse.models.core import CoreModel
-
 from enum import Enum, unique
+
+from cargo_parse.models.core import CoreModel
 
 
 @unique

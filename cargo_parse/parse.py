@@ -1,11 +1,16 @@
-import toml
-from pydantic import parse_obj_as
-
 from pathlib import Path
 from typing import Dict, List
 
-from cargo_parse.models.cargo_toml import CargoTomlData, DependencyData, FeaturesData, PatchData, \
-    ProfileData
+import toml
+from pydantic import parse_obj_as
+
+from cargo_parse.models.cargo_toml import (
+    CargoTomlData,
+    DependencyData,
+    FeaturesData,
+    PatchData,
+    ProfileData,
+)
 from cargo_parse.models.dependency import Dependency
 from cargo_parse.models.features import Feature
 from cargo_parse.models.manifest import Manifest
@@ -25,7 +30,9 @@ def parse_manifest_from_toml(toml_file: Path) -> Manifest:
         package=cargo_toml_data.package,
         dependencies=_get_dependencies(cargo_toml_data.dependencies),
         dev_dependencies=_get_dependencies(cargo_toml_data.dev_dependencies),
-        build_dependencies=_get_dependencies(cargo_toml_data.build_dependencies),
+        build_dependencies=_get_dependencies(
+            cargo_toml_data.build_dependencies
+        ),
         badges=cargo_toml_data.badges,
         patch=_get_patches(cargo_toml_data.patch),
         features=_get_features(cargo_toml_data.features),
@@ -37,7 +44,9 @@ def parse_manifest_from_toml(toml_file: Path) -> Manifest:
 
 
 @none_if_none
-def _get_dependencies(dependency_data: Dict[str, DependencyData]) -> List[Dependency]:
+def _get_dependencies(
+    dependency_data: Dict[str, DependencyData]
+) -> List[Dependency]:
     dependencies = []
     for name, dep in dependency_data.items():
         data = {"name": name}

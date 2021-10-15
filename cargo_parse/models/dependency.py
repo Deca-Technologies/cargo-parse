@@ -1,6 +1,6 @@
-from cargo_parse.models.cargo_toml import CoreModel
+from typing import List, NewType, Optional, Union
 
-from typing import Dict, List, NewType, Optional, Union
+from cargo_parse.models.cargo_toml import CoreModel
 
 
 class BaseDependency(CoreModel):
@@ -31,6 +31,7 @@ class MultipleGitDependency(GitDependency):
     """Git dependency with crates.io version specified.
     See: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#multiple-locations
     """
+
     version: str
 
 
@@ -38,14 +39,18 @@ class MultiplePathDependency(PathDependency):
     """Path dependency with crates.io version specified.
     See: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#multiple-locations
     """
+
     version: str
 
 
-Dependency = NewType("Dependency", Union[
-    CustomRegistryDependency,
-    MultipleGitDependency,
-    GitDependency,
-    MultiplePathDependency,
-    PathDependency,
-    CratesIoDependency,
-])
+Dependency = NewType(
+    "Dependency",
+    Union[
+        CustomRegistryDependency,
+        MultipleGitDependency,
+        GitDependency,
+        MultiplePathDependency,
+        PathDependency,
+        CratesIoDependency,
+    ],
+)

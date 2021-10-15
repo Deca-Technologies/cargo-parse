@@ -1,7 +1,7 @@
-from pydantic import Field
-
 from enum import Enum, unique
 from typing import Optional
+
+from pydantic import Field
 
 from cargo_parse.models.core import CoreModel
 
@@ -41,7 +41,9 @@ class Profile(CoreModel):
     name: str
     opt_level: Optional[OptLevel] = Field(None, alias="opt-level")
     debug: Optional[str]
-    split_debuginfo: Optional[SplitDebugInfo] = Field(None, alias="split-debuginfo")
+    split_debuginfo: Optional[SplitDebugInfo] = Field(
+        None, alias="split-debuginfo"
+    )
     debug_assertions: Optional[bool] = Field(None, alias="debug-assertions")
     overflow_checks: Optional[bool] = Field(None, alias="overflow-checks")
     lto: Optional[Lto]
