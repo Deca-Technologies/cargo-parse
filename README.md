@@ -19,3 +19,27 @@ environment besides the Poetry project environment:
 ```
 <your-python> -m pip install <path-to-repo>/dist/cargo-parse-*.whl
 ```
+
+
+## Usage
+
+Import the `parse_manifest_from_toml` function and use it to parse the contents of `Cargo.toml`:
+
+
+```python
+from cargo_parse import parse_manifest_from_toml
+
+from pathlib import Path
+
+cargo_toml_file = "Cargo.toml"
+manifest = parse_manifest_from_toml(Path(cargo_toml_file))
+
+# Print out the package version
+print(manifest.package.version)
+
+# Print out the dependencies
+if manifest.dependencies is not None:
+    print(manifest.dependencies)
+else:
+    print(f"No dependencies defined in {cargo_toml_file}")
+```
