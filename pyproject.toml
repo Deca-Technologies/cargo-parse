@@ -5,7 +5,7 @@ description = "Library to parse the Cargo.toml manifest file."
 authors = ["Andrew Hoetker <andrew.hoetker@thinkdeca.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 toml = "^0.10.2"
 pydantic = "^1.8.2"
 
