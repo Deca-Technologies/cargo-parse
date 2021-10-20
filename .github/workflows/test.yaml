@@ -20,6 +20,6 @@ jobs:
         with:
           poetry-version: ${{ matrix.poetry-version }}
       - name: Install dependencies using Poetry
-        run: poetry install --dev
+        run: poetry install
       - name: Run unit tests using Poetry and Pytest
         run: poetry run pytest tests
