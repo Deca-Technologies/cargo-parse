@@ -9,7 +9,10 @@
       "Christopher Sebastian <christopher.sebastian@decatechnologies.com>",
       "Jiyang Zhou <jiyang.zhou@decatechnologies.com>"
     ],
-    "description": "Adaptive Patterning core engine"
+    "description": "Adaptive Patterning core engine",
+    "edition": "2018",
+    "default-run": "zinc",
+    "build": "build.rs"
   },
   "dependencies": [
     {

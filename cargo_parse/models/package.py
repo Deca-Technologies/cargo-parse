@@ -1,5 +1,7 @@
 from typing import List, Optional
 
+from pydantic import Field
+
 from cargo_parse.models.core import CoreModel
 
 
@@ -9,6 +11,9 @@ class Package(CoreModel):
     authors: Optional[List[str]]
     description: Optional[str]
     documentation: Optional[str]
+    edition: Optional[str]
+    build: Optional[str]
+    default_run: Optional[str] = Field(None, alias="default-run")
     homepage: Optional[str]
     repository: Optional[str]
     readme: Optional[str]
