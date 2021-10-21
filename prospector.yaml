@@ -8,3 +8,12 @@ pylint:
         -   consider-using-f-string
         # Disabled because pre-commit does not pick up dependencies
         -   import-error
+        # Disabled because many modules are simply a collection of
+        # Pydantic Model classes
+        -   too-few-public-methods
+
+pyflakes:
+    disable:
+        # disabled because this is a library package, and we want to provide
+        # useful imports
+        - F401

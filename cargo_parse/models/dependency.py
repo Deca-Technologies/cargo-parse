@@ -28,17 +28,13 @@ class PathDependency(BaseDependency):
 
 
 class MultipleGitDependency(GitDependency):
-    """Git dependency with crates.io version specified.
-    See: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#multiple-locations
-    """
+    """Git dependency with crates.io version specified."""
 
     version: str
 
 
 class MultiplePathDependency(PathDependency):
-    """Path dependency with crates.io version specified.
-    See: https://doc.rust-lang.org/cargo/reference/specifying-dependencies.html#multiple-locations
-    """
+    """Path dependency with crates.io version specified."""
 
     version: str
 
