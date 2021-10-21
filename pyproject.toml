@@ -4,6 +4,10 @@ version = "0.1.0"
 description = "Library to parse the Cargo.toml manifest file."
 authors = ["Andrew Hoetker <andrew.hoetker@thinkdeca.com>"]
 license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/Deca-Technologies/cargo-parse"
+repository = "https://github.com/Deca-Technologies/cargo-parse"
+keywords = ["cargo", "rust"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
