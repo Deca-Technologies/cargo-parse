@@ -1,0 +1,39 @@
+name: Unit Tests
+
+on: [ pull_request, push ]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Linux-37, python-version: '3.7', os: ubuntu-latest, tox: py37 }
+          - { name: Linux-38, python-version: '3.8', os: ubuntu-latest, tox: py38 }
+          - { name: Linux-39, python-version: '3.9', os: ubuntu-latest, tox: py39 }
+          - { name: Mac-37, python-version: '3.7', os: macos-latest, tox: py37 }
+          - { name: Mac-38, python-version: '3.8', os: macos-latest, tox: py38 }
+          - { name: Mac-39, python-version: '3.9', os: macos-latest, tox: py39 }
+          - { name: Windows-37, python-version: '3.7', os: windows-latest, tox: py37 }
+          - { name: Windows-38, python-version: '3.8', os: windows-latest, tox: py38 }
+          - { name: Windows-39, python-version: '3.9', os: windows-latest, tox: py39 }
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.name }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry 1.1.9
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: 1.1.9
+
+      - name: Install testing dependencies using Poetry
+        run: poetry install
+
+      - name: Run Pytest unit tests using tox
+        run: poetry run tox -e ${{ matrix.tox }} -e report
