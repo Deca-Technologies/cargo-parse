@@ -1,0 +1,13 @@
+[paths]
+source =
+    cargo_parse
+
+[run]
+branch = true
+parallel = true
+source =
+    __init__
+
+[report]
+show_missing = true
+precision = 2

@@ -10,10 +10,15 @@ toml = "^0.10.2"
 pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
-pytest = "^5.2"
+pytest = "^6.0"
 devtools = "^0.8.0"
 black = "^21.9b0"
-isort = "^5.9.3"
+isort = { version = "^5.9.3", extras = ["pyproject"] }
+pre-commit = "^2.15.0"
+prospector = "^1.5.1"
+tox = "^3.24.4"
+coverage = "^6.0.2"
+pytest-cov = "^3.0.0"
 
 [tool.black]
 line-length = 79
@@ -33,14 +38,22 @@ exclude = '''
 
 [tool.isort]
 known_first_party = 'cargo_parse'
-known_third_party = ["click", "pytest"]
+known_third_party = ["pytest"]
 multi_line_output = 3
 lines_after_imports = 2
 force_grid_wrap = 0
 combine_as_imports = true
 include_trailing_comma = true
 
-
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "-q",
+    "--cov-report=term-missing:skip-covered",
+    "--cov=cargo_parse",
+    "--durations=5",
+    "--ignore=acceptance_test",
+]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
