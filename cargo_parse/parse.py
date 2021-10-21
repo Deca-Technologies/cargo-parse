@@ -20,8 +20,8 @@ from cargo_parse.util import none_if_none
 
 
 def parse_manifest_from_toml(toml_file: Path) -> Manifest:
-    with toml_file.open("r") as f:
-        data = toml.load(f)
+    with toml_file.open("r") as file:
+        data = toml.load(file)
 
     cargo_toml_data = CargoTomlData(**data)
 

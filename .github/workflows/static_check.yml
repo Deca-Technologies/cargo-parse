@@ -1,0 +1,35 @@
+name: Static Check
+
+on: [pull_request, push]
+
+jobs:
+  prospector-diff:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.9]
+        poetry-version: [1.1.9]
+
+    steps:
+      # Checks out repository for other checks to run
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install Poetry ${{ matrix.poetry-version }}
+        uses: abatilo/actions-poetry@v2.0.0
+        with:
+          poetry-version: ${{ matrix.poetry-version }}
+
+      - name: Install dependencies using Poetry
+        run: poetry install
+
+      - name: check-branch
+        run: |
+          poetry run prospector -s veryhigh -o json:branch-results.json -o text:branch-results.txt -0 --max-line-length 200
+          cat branch-results.txt

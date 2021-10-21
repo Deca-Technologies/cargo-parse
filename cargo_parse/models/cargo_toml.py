@@ -6,7 +6,6 @@ from cargo_parse.models.badges import Badges
 from cargo_parse.models.core import CoreModel
 from cargo_parse.models.lib import Lib
 from cargo_parse.models.package import Package
-from cargo_parse.models.profile import Profile
 from cargo_parse.models.workspace import Workspace
 
 

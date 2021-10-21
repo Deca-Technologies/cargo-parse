@@ -8,10 +8,12 @@ from cargo_parse import __version__
 from cargo_parse.parse import parse_manifest_from_toml
 
 
-@fixture
-def cargo_manifest() -> Dict[str, Any]:
-    with open("tests/fixtures/cargo_manifest.json", "r") as f:
-        data = json.load(f)
+@fixture(name="cargo_manifest")
+def fixture_cargo_manifest() -> Dict[str, Any]:
+    with Path("tests/fixtures/cargo_manifest.json").open(
+        "r", encoding="utf8"
+    ) as file:
+        data = json.load(file)
         return data
 
 
