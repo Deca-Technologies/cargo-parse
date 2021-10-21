@@ -1,5 +1,9 @@
 # cargo-parse
 
+[![Unit Tests](https://github.com/Deca-Technologies/cargo-parse/actions/workflows/unit_test.yml/badge.svg?branch=main)](https://github.com/Deca-Technologies/cargo-parse/actions/workflows/unit_test.yml)
+[![PyPI version](https://badge.fury.io/py/cargo-parse.svg)](https://badge.fury.io/py/cargo-parse)
+
+
 A Python package to parse `Cargo.toml` manifest files.
 
 ## Installation
