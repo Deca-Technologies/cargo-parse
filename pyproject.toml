@@ -24,6 +24,12 @@ prospector = "^1.5.1"
 tox = "^3.24.4"
 coverage = "^6.0.2"
 pytest-cov = "^3.0.0"
+xdoctest = "^0.15.10"
+Sphinx = "^4.2.0"
+sphinx-rtd-theme = "^1.0.0"
+
+[tool.poetry.extras]
+doc = ["sphinx", "sphinx_rtd_theme", "m2r"]
 
 [tool.black]
 line-length = 79
@@ -56,12 +62,36 @@ include_trailing_comma = true
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = [
-    "-q",
     "--cov-report=term-missing:skip-covered",
     "--cov=cargo_parse",
     "--durations=5",
     "--ignore=acceptance_test",
+    "--xdoctest"
 ]
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = true
+skipsdist = true
+envlist = py{37,38,39}
+
+[testenv]
+setenv =
+    py{37,38,39}: COVERAGE_FILE = .coverage.{envname}
+whitelist_externals = poetry
+commands =
+    poetry install -v
+    poetry run pytest {posargs}
+
+[testenv:report]
+skip_install = true
+deps = coverage
+commands =
+    coverage combine
+    coverage html
+    coverage report --fail-under=90
+"""
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

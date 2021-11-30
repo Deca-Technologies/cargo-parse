@@ -78,6 +78,14 @@ def _get_patches(patch_data: Dict[str, PatchData]) -> List[Patch]:
 
 @none_if_none
 def _get_profiles(profile_data: Dict[str, ProfileData]) -> List[Profile]:
+    """
+    Get Profile information.
+
+    example: xdoctest: +SKIP
+        >>> _get_profiles(None)
+        None
+    """
+
     profiles = []
     for name, profile in profile_data.items():
         data = {"name": name}

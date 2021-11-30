@@ -8,22 +8,13 @@ A Python package to parse `Cargo.toml` manifest files.
 
 ## Installation
 
-This package is not (yet) published on PyPI. For now, the best way to install the package is to use
-[Poetry](https://python-poetry.org/).
+This package is published on PyPI: https://pypi.org/project/cargo-parse/
 
-Clone this repository and run `poetry install`.
+To install the package using `pip`:
 
-### Install in another environment
-
-To install the package in a system environment, or another virtual
-environment besides the Poetry project environment:
-
-1. Build the package wheel with `poetry build`.
-2. Install the package using the correct environment's `pip`:
+```shell
+pip install cargo-parse
 ```
-<your-python> -m pip install <path-to-repo>/dist/cargo-parse-*.whl
-```
-
 
 ## Usage
 
